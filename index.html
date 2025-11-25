@@ -1,91 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sanjana Menon</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanjana Menon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f8f9fa;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Floating background blobs */
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            opacity: 0.6;
+            z-index: 0;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .blob1 {
+            width: 150px;
+            height: 150px;
+            background: #ffd93d;
+            top: 10%;
+            right: 15%;
+            animation-delay: 0s;
+        }
+
+        .blob2 {
+            width: 120px;
+            height: 120px;
+            background: #ff6b9d;
+            top: 15%;
+            right: 5%;
+            animation-delay: 2s;
+        }
+
+        .blob3 {
+            width: 100px;
+            height: 100px;
+            background: #6bcfff;
+            top: 35%;
+            left: 5%;
+            animation-delay: 4s;
+        }
+
+        .blob4 {
+            width: 130px;
+            height: 130px;
+            background: #c780e8;
+            bottom: 20%;
+            right: 10%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: #222;
+        }
+
+        .intro {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #444;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: white;
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .contact-btn i {
+            font-size: 1.2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-top: 60px;
+            margin-bottom: 30px;
+            color: #222;
+            text-transform: lowercase;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            color: #555;
+        }
+
+        .education-section, .project-section {
+            margin-bottom: 40px;
+        }
+
+        .education-item {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .project {
+            margin-bottom: 35px;
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+        }
+
+        .project-image {
+            flex-shrink: 0;
+            width: 200px;
+            height: 150px;
+            background: #e9ecef;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #adb5bd;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+
+        .project-content {
+            flex: 1;
+        }
+
+        .project h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .project p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .intro {
+                font-size: 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 15px;
+            }
+
+            .container {
+                padding: 40px 20px;
+            }
+
+            .project {
+                flex-direction: column;
+            }
+
+            .project-image {
+                width: 100%;
+                height: 180px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <header>
-    <h1 class="name">Sanjana Menon</h1>
-    <p class="tagline">Data Science • Machine Learning • Analytics</p>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+    <div class="blob blob4"></div>
 
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+    <div class="container">
+        <h1>I'm Sanjana Menon</h1>
+        
+        <div class="intro">
+            I am a graduate student in Data Analytics Engineering at Northeastern University. I specialize in AI/ML, computer vision, and deep learning.
+            <br><br>
+            And I'm passionate about building intelligent systems that solve real-world problems.
+        </div>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I’m Sanjana, a Data Science enthusiast with experience in Machine Learning,
-      Deep Learning, and real-time image analytics. I enjoy building practical AI
-      applications and exploring creative data solutions.
-    </p>
-  </section>
+        <div class="contact-buttons">
+            <a href="mailto:menon.sanja@northeastern.edu" class="contact-btn">
+                <i class="fas fa-envelope"></i>
+                Email
+            </a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-btn">
+                <i class="fab fa-linkedin"></i>
+                LinkedIn
+            </a>
+            <a href="https://github.com/yourusername" target="_blank" class="contact-btn">
+                <i class="fab fa-github"></i>
+                GitHub
+            </a>
+        </div>
 
-  <section id="projects">
-    <h2>Projects</h2>
+        <h2>skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card" title="Python">
+                <i class="fab fa-python"></i>
+            </div>
+            <div class="skill-card" title="C++">
+                <i class="fas fa-code"></i>
+            </div>
+            <div class="skill-card" title="R">
+                <i class="fab fa-r-project"></i>
+            </div>
+            <div class="skill-card" title="JavaScript">
+                <i class="fab fa-js"></i>
+            </div>
+            <div class="skill-card" title="HTML/CSS">
+                <i class="fab fa-html5"></i>
+            </div>
+            <div class="skill-card" title="SQL">
+                <i class="fas fa-database"></i>
+            </div>
+            <div class="skill-card" title="TensorFlow">
+                <i class="fas fa-brain"></i>
+            </div>
+            <div class="skill-card" title="OpenCV">
+                <i class="fas fa-eye"></i>
+            </div>
+            <div class="skill-card" title="Power BI">
+                <i class="fas fa-chart-bar"></i>
+            </div>
+            <div class="skill-card" title="Matplotlib">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="skill-card" title="Git">
+                <i class="fab fa-git-alt"></i>
+            </div>
+            <div class="skill-card" title="GitHub">
+                <i class="fab fa-github"></i>
+            </div>
+            <div class="skill-card" title="Linux">
+                <i class="fab fa-linux"></i>
+            </div>
+            <div class="skill-card" title="Machine Learning">
+                <i class="fas fa-robot"></i>
+            </div>
+        </div>
 
-    <div class="project">
-      <h3>Real-Time Emotion Detection</h3>
-      <p>
-        Built a deep learning model using CNNs to detect emotions from images and
-        videos using FER2013, CK+, and DeepFace datasets.
-      </p>
+        <h2>education</h2>
+        <div class="education-section">
+            <div class="education-item">
+                <strong>Northeastern University</strong>; 2025-Present
+            </div>
+            <div class="education-item">
+                <strong>NMIMS University, Mumbai</strong>; 2021-2025
+            </div>
+        </div>
+
+        <h2>research</h2>
+        <div class="project-section">
+            <div class="project">
+                <h3>Emotion-Driven Adaptive Music Recommender Using Deep Learning</h3>
+                <p>My research work focuses on developing an intelligent music recommendation system that adapts to users' emotional states in real-time. Using convolutional neural networks for facial expression analysis combined with reinforcement learning, the system tracks emotional patterns over time and adjusts music suggestions with the goal of improving user mood. This work explores the intersection of computer vision, affective computing, and personalized recommendation systems.</p>
+            </div>
+        </div>
+
+        <h2>projects</h2>
+        <div class="project-section">
+            <div class="project">
+                <div class="project-image">
+                    Add your project image here
+                </div>
+                <div class="project-content">
+                    <h3>Zero-Watermarking for Image Authentication</h3>
+                    <p>Developed a feature-based zero-watermarking system that validates images without altering visual content. Uses ResNet50 for feature extraction and SHA-256 for cryptographic security, with MongoDB backend and REST API integration.</p>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-image">
+                    Add your project image here
+                </div>
+                <div class="project-content">
+                    <h3>GDPR-Compliant Facial Recognition System</h3>
+                    <p>Built an enterprise-grade facial recognition model for CCTV analysis with privacy-first design. Integrated heatmap analysis using k-means clustering to identify security patterns, with OAuth 2.0 authentication and full GDPR/ISO 27001 compliance.</p>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-image">
+                    Add your project image here
+                </div>
+                <div class="project-content">
+                    <h3>Emotion Recognition and Content Moderation</h3>
+                    <p>Created a dual-purpose system combining real-time emotion recognition (87% accuracy) with NLP-based sentiment analysis. Currently deployed in production for content moderation in a mobile application.</p>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-image">
+                    Add your project image here
+                </div>
+                <div class="project-content">
+                    <h3>Time-Series Forecasting with LSTM Networks</h3>
+                    <p>Implemented LSTM-based prediction models for sequential data with comprehensive preprocessing pipelines. Achieved strong performance on industry-standard metrics including MAE and RMSE.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>experience</h2>
+        <div class="project-section">
+            <div class="project">
+                <h3>AI/ML Intern at Orchids Network and Systems</h3>
+                <p>Developed facial recognition systems for CCTV analysis with enterprise security standards. Implemented clustering algorithms for security monitoring and OAuth 2.0 authentication.</p>
+            </div>
+
+            <div class="project">
+                <h3>AI/ML Intern at Vsure Consultancy Services</h3>
+                <p>Built emotion recognition models achieving 87% accuracy and NLP-based content moderation systems currently used in client applications.</p>
+            </div>
+
+            <div class="project">
+                <h3>Volunteer IT Teacher at Nila Seva Samithi</h3>
+                <p>Teaching technology skills and AI literacy to underprivileged girls aged 7-20, providing mentorship and career guidance for IT career paths.</p>
+            </div>
+        </div>
     </div>
-
-    <div class="project">
-      <h3>Image Colorization Using CNNs</h3>
-      <p>
-        Designed an image-classification-based model to convert grayscale images
-        into colored visuals using neural networks.
-      </p>
-    </div>
-
-    <div class="project">
-      <h3>Air Quality Prediction</h3>
-      <p>
-        Conducted research on environmental data forecasting using time‑series
-        ML models.
-      </p>
-    </div>
-  </section>
-
-  <section id="experience">
-    <h2>Experience</h2>
-
-    <div class="exp">
-      <h3>AI & ML Intern — Vsure Consultancy Services</h3>
-      <p>
-        Developed an emotion detection model for image and video data under the
-        guidance of a senior ML mentor.
-      </p>
-    </div>
-
-    <div class="exp">
-      <h3>Women in Data Science — Member</h3>
-      <p>
-        Engaged with the community through meetups, workshops, and collaborative
-        data activities.
-      </p>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: menon.sanja@northeastern.edu</p>
-    <p>LinkedIn: <a href="www.linkedin.com/in/sanjana-menon-1a6bb72a6"
-" target="_blank">Your Profile</a></p>
-  </section>
-
-  <footer>
-    <p>© 2025 Sanjana Menon</p>
-  </footer>
 </body>
 </html>
